@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.version     = Rss::Motor::VERSION
   s.authors     = ["AbhishekKr"]
   s.email       = ["abhikumar163@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/abhishekkr/rubygem_rss_motor"
   s.summary     = %q{wanna use RSS in your code easily, its here to aid}
-  s.description = %q{TODO: Write a gem description}
+  s.description = %q{boost up your RSS related applications with the motor available: https://github.com/abhishekkr/rubygem_rss_motor/blob/master/README}
 
   s.rubyforge_project = "rss-motor"
 

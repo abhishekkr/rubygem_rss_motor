@@ -1,0 +1,32 @@
+======================================================================
+
+ ||}}  //\  //\ _ ||\/|| ||@|| ~++~ ||@|| ||))
+ ||\\ _\\  _\\    ||  || ||_||  ||  ||_|| ||\\
+
+======================================================================
+v 0.0.1
+
+@GitHub: https://github.com/abhishekkr/rubygem_rss_motor
+@RubyGems: http://rubygems.org/gems/rss-motor
+
+for support contact: 
+  mail: abhikumar163@gmail.com
+  http://www.twitter.com/aBionic
+======================================================================
+
+An easy to use RSS library to get kickstarted with using RSS Feeds.
+
+[How To Use]:
+  Loading:
+    + $ gem install rss-motor
+    + 'require' the 'rss-motor'
+
+  Usage:
+  [+] passing a single RSS Link and fetching array of all items, with hash of nodes
+    puts Rss::Motor.rss_items 'http://news.ycombinator.com/rss'
+
+  [+] filtering items from multiple rss-links having any from set of given keywords
+    puts Rss::Motor.rss_grep 'http://news.ycombinator.com/rss', ['ruby', 'android']
+
+=====================================================================
+=====================================================================
