@@ -8,7 +8,12 @@
 CHANGE-LOG
 =====================================================================
 =====================================================================
-Changes from v0.0.0 to v0.0.1
+Changes from v0.0.3 to v0.0.4
+[+] 3 RSS Motors Available, 1 added is
+ |[+] filtering items from multiple rss links and the links in its items
+ |  Rss::Motor.rss_grep_link ['<RSS_LINKS>'], [<KEYWORDS_ARR>]
+=====================================================================
+Changes from v0.0.0 to v0.0.3
 [+] 2 RSS Motors Available
  |[+] passing a single RSS Link and fetching array of all items, with hash of nodes
  |  Rss::Motor.rss_items '<SINGLE_RSS_LINK>'

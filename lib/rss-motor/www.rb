@@ -7,12 +7,12 @@ require "xml-motor"
 module Rss
   module WWW
 
-    def self.rss_items(rssurl)
-      rss_data = http_requester rssurl, "rss.channel.item"
-      Rss::Proc.rss_hashr rss_data
+    def self.rss_channel(rssurl)
+      xml = http_requester rssurl
+      XMLMotor.get_node_from_content xml, 'rss.channel'
     end
 
-    def self.http_requester(httpurl, node)
+    def self.http_requester(httpurl)
       begin
         uri = URI.parse(httpurl)
         http = Net::HTTP.new(uri.host, uri.port)
@@ -23,9 +23,9 @@ module Rss
         request = Net::HTTP::Get.new(uri.request_uri)
         response = http.request(request)
       rescue
-        response = nil
+        return ''
       end
-      XMLMotor.get_node_from_content response.body, node
+      response.body
     end
   end
 end

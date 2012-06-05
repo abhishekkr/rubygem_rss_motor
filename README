@@ -28,5 +28,9 @@ An easy to use RSS library to get kickstarted with using RSS Feeds.
   [+] filtering items from multiple rss-links having any from set of given keywords
     puts Rss::Motor.rss_grep 'http://news.ycombinator.com/rss', ['ruby', 'android']
 
+  [+] filtering items from multiple rss-links having any from set of given keywords,
+      also grabbing entire rss item's link content and check it for filter
+    puts Rss::Motor.rss_grep_link 'http://news.ycombinator.com/rss', ['ruby', 'android']
+
 =====================================================================
 =====================================================================
