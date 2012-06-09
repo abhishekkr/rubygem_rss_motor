@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rss-motor (0.0.1)
+    rss-motor (0.0.5)
       xml-motor (>= 0.1.4)
 
 GEM

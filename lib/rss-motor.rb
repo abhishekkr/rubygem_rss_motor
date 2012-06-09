@@ -11,6 +11,7 @@ module Rss
 
     def self.rss_items(rss_url)
       rss_data = Rss::WWW.rss_channel rss_url
+      return [{}] if rss_data.empty?
       Rss::Proc.rss_hashr rss_data.join
     end
 
@@ -44,6 +45,7 @@ module Rss
     end
 
     def self.item_filter(item, filter)
+      return false if item.empty? || filter.nil?
       return true if
         item['title'].match(/#{filter}/) or
         item['link'].match(/#{filter}/) or

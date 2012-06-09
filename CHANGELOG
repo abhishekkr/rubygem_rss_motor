@@ -8,6 +8,12 @@
 CHANGE-LOG
 =====================================================================
 =====================================================================
+Changes from v0.0.4 to v0.0.5
+[+] Few Bug Absurdities Fixed
+ |[+] Web link redirection response['location'] fetched
+ |[+] Web Response Codes 4xx|5xx avoided
+ |[+] Placed some empty data processing 'nil' exceptions
+=====================================================================
 Changes from v0.0.3 to v0.0.4
 [+] 3 RSS Motors Available, 1 added is
  |[+] filtering items from multiple rss links and the links in its items

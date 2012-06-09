@@ -25,7 +25,9 @@ module Rss
       rescue
         return ''
       end
-      response.body
+      return response.body if response['location'].nil?
+      return '' if response.code.match(/^4/) || response.code.match(/^5/)
+      http_requester response['location']
     end
   end
 end
