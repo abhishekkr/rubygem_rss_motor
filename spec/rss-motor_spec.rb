@@ -57,9 +57,7 @@ describe Rss::Motor do
       data.size.should eq(2)
     end
   end
-  #return false if item.empty? || filter.nil?
-  #    return !item.values.select{|v| v.match(/#{filter}/)}.empty?
-  #
+  
   describe "item_filter" do
     it "should return true if filter value founded" do
       res = Rss::Motor.item_filter({"title" => "some value"}, "value")
