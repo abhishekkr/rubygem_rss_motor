@@ -8,6 +8,10 @@
 CHANGE-LOG
 =====================================================================
 =====================================================================
+Changes from v0.0.6 to v0.0.7
+[+] rss_grep, rss_grep_link's filter match made case in-sensitive
+[+] RSpec Added [ @fntzr ]
+=====================================================================
 Changes from v0.0.5 to v0.0.6
 [+] pull request
  |[+] https://github.com/fntzr/rubygem_rss_motor/commit/3a49b68167f1e148753224c869a04b9be330e1c1

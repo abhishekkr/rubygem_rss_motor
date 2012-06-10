@@ -27,12 +27,14 @@ An easy to use RSS library to get kickstarted with using RSS Feeds.
     Output: [{'title1' => '....', ...}, {'title2' => '....', ...}, ...]
 
   [+] filtering items from multiple rss-links having any from set of given keywords
+      #case in-sensitive filtering
     puts Rss::Motor.rss_grep 'http://news.ycombinator.com/rss', ['ruby', 'android']
     Output: ['ruby' => [ {'title1' => '....', ...}, {'title2' => '....', ...}, ...]
             'android' => [ {'title1' => '....', ...}, {'title2' => '....', ...}, ...] ]
 
   [+] filtering items from multiple rss-links having any from set of given keywords,
       also grabbing entire rss item's link content and check it for filter
+      #case in-sensitive filtering
     puts Rss::Motor.rss_grep_link 'http://news.ycombinator.com/rss', ['ruby', 'android']
     Output: ['ruby' => [ {'title1' => '....', ...}, {'title2' => '....', ...}, ...]
             'android' => [ {'title1' => '....', ...}, {'title2' => '....', ...}, ...] ]
