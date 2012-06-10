@@ -8,6 +8,15 @@
 CHANGE-LOG
 =====================================================================
 =====================================================================
+Changes from v0.0.5 to v0.0.6
+[+] pull request
+ |[+] https://github.com/fntzr/rubygem_rss_motor/commit/3a49b68167f1e148753224c869a04b9be330e1c1
+ | | The engines rss_grep and rss_grep_link send improvised values like
+ | |  [ {'filter1' => [{'title' => '....', ...}, ...]},
+ | |    {'filter2' => [{'title' => '....', ...}, ...]} ... ]
+[+] Few Bug Absurdities Fixed
+ |[+] HTTP Status Check Order
+=====================================================================
 Changes from v0.0.4 to v0.0.5
 [+] Few Bug Absurdities Fixed
  |[+] Web link redirection response['location'] fetched
