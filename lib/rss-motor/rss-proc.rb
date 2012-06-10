@@ -4,7 +4,7 @@ module Rss
     def self.rss_hashr(rss_data)
       splitd = XMLMotor.splitter rss_data
       tags = XMLMotor.indexify splitd
-
+      
       items = XMLMotor.xmldata splitd, tags, 'item'
       titles = XMLMotor.xmldata splitd, tags, 'title'
       links = XMLMotor.xmldata splitd, tags, 'link'
@@ -13,7 +13,7 @@ module Rss
       pubDates = XMLMotor.xmldata splitd, tags, 'pubDate'
       authors = XMLMotor.xmldata splitd, tags, 'author'
       enclosures = XMLMotor.xmldata splitd, tags, 'enclosure'
-
+      
       rss_hash = []
       for idx in 0..(items.count - 1)
         rss_hash[idx] = {
