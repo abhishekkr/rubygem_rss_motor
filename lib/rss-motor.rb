@@ -57,7 +57,7 @@ module Rss
 
     def self.item_filter(item, filter)
       return false if item.empty? || filter.nil? || filter.strip.empty?
-      return !item.values.select{|v| v.match(/#{filter}/)}.empty?
+      return !item.values.select{|v| v.match(/#{filter}/i)}.empty?
     end
   end
 end
