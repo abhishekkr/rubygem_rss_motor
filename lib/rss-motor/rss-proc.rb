@@ -17,13 +17,13 @@ module Rss
       rss_hash = []
       for idx in 0..(items.count - 1)
         rss_hash[idx] = {
-          'title'       => titles[idx] || '',
-          'link'        => links[idx] || '',
-          'guid'        => guids[idx] || '',
-          'description' => descriptions[idx] || '',
-          'date'        => pubDates[idx] || '',
-          'author'      => authors[idx] || '',
-          'enclosure'   => enclosures[idx] || ''
+          :title       => titles[idx] || '',
+          :link        => links[idx] || '',
+          :guid        => guids[idx] || '',
+          :description => descriptions[idx] || '',
+          :date        => pubDates[idx] || '',
+          :author      => authors[idx] || '',
+          :enclosure   => enclosures[idx] || ''
         }
       end
       return rss_hash

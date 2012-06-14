@@ -16,7 +16,8 @@ module Rss
     end
 
     #Returned Array of Hashes, where the keys are given *filters*
-    #
+    # or 
+    # Returned Response as rss_items if filters is empty
     #Example
     #  Rss::Motor.rss_grep 'http://example.com', ['item1', 'item2', 'item3']
     #  [
@@ -24,37 +25,40 @@ module Rss
     #     {'item2' => [{'title' => '....'}, {'title' => '....'}, ...]},
     #     {'item3' => [{'title' => '....'}, {'title' => '....'}, ...]}
     #  ]
-    #
     def self.rss_grep(rss_urls, filters)
-      rss_items = filters.flatten.map{|k| {k => []} }
-      [rss_urls].flatten.each do |rss_url|
-        rss = rss_items rss_url
-        rss.each do |item|
-          [filters].flatten.each do |filter|
-            rss_items.detect{|a| a.key?(filter)}[filter].push(item) if item_filter(item, filter)
-          end
-        end
-      end
-      rss_items
+      item_create_response(rss_urls, filters, 
+             lambda {|item, filter, link_body| (item_filter(item, filter)) })
+      
     end
 
     def self.rss_grep_link(rss_urls, filters)
-      rss_items = filters.flatten.map{|k| {k => []} }
+      item_create_response(rss_urls, filters, 
+             lambda {|item, filter, link_body| (item_filter(item, filter) or 
+                        link_body.match(/#{filter}/))})
+          
+    end
+    
+    def self.item_create_response(rss_urls, filters, exp)
+      return rss_items if filters.empty?
+
+      rss_items = filters.flatten.map{|k| {k.to_sym => []} }
       [rss_urls].flatten.each do |rss_url|
         rss = rss_items rss_url
         rss.each do |item|
           link_body = Rss::WWW.http_requester item['link']
           [filters].flatten.each do |filter|
-            rss_items.detect{|a| a.key?(filter)}[filter].push(item) if
-              item_filter(item, filter) or
-              link_body.match(/#{filter}/)
+             item_push(rss_items, filter, item) if exp.call(item, filter, link_body)
           end
         end
       end
       rss_items
+    
     end
 
-
+    def self.item_push(collection, filter, item) 
+      collection.detect{|a| a.key?(filter.to_sym)}[filter.to_sym].push(item)
+    end
+    
     def self.item_filter(item, filter)
       return false if item.empty? || filter.nil? || filter.strip.empty?
       return !item.values.select{|v| v.match(/#{filter}/)}.empty?
