@@ -1,17 +1,17 @@
 PATH
   remote: .
   specs:
-    rss-motor (0.0.7)
-      xml-motor (>= 0.1.4)
+    rss-motor (0.0.8)
+      xml-motor (>= 0.1.5)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    xml-motor (0.1.5)
+    xml-motor (0.1.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   rss-motor!
-  xml-motor (>= 0.1.4)
+  xml-motor (>= 0.1.5)

@@ -16,7 +16,7 @@ module Rss
         description = XMLMotor.xmldata item_splitd, item_tags, 'description'
         pubDate = XMLMotor.xmldata item_splitd, item_tags, 'pubDate'
         author = XMLMotor.xmldata item_splitd, item_tags, 'author'
-        enclosure = XMLMotor.xmldata item_splitd, item_tags, 'enclosure', nil, true
+        enclosure = XMLMotor.xmlattrib 'url', item_splitd, item_tags, 'enclosure'
         rss_hash[idx] = {
           'title'       => title.join,
           'link'        => link.join,
