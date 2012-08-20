@@ -8,6 +8,10 @@
 CHANGE-LOG
 =====================================================================
 =====================================================================
+Changes from v0.0.7 to v0.0.8
+[+] updated to xml-motor v0.1.5 making <solonode/> grep corrected
+[+] fixed any chance of mismatch number of elements inside item-node
+=====================================================================
 Changes from v0.0.6 to v0.0.7
 [+] rss_grep, rss_grep_link's filter match made case in-sensitive
 [+] RSpec Added [ @fntzr ]
