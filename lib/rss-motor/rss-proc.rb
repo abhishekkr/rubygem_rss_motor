@@ -1,11 +1,7 @@
 module Rss
   module Proc
 
-    def self.rss_hashr(rss_data)
-      splitd = XMLMotor.splitter rss_data
-      tags = XMLMotor.indexify splitd
-      items = XMLMotor.xmldata splitd, tags, 'item'
-
+    def self.rss_hashr(items, more_nodes, more_node_keys)
       rss_hash = []
       items.each_with_index do |item, idx|
         item_splitd = XMLMotor.splitter item
@@ -26,6 +22,14 @@ module Rss
           'author'      => author.join,
           'enclosure'   => enclosure.join
         }
+
+        [more_nodes].flatten.each do |node|
+          rss_hash[idx][node] = XMLMotor.xmldata(item_splitd, item_tags, node).join
+        end
+
+        more_node_keys.each_pair do |node, key|
+          rss_hash[idx][node] = XMLMotor.xmlattrib(key, item_splitd, item_tags, node).join
+        end
       end
       return rss_hash
     end

@@ -9,10 +9,14 @@ end
 module Rss
   module Motor
 
-    def self.rss_items(rss_url)
+    def self.rss_items(rss_url, more_nodes=[], more_node_keys={})
       rss_data = Rss::WWW.rss_channel rss_url
       return [{}] if rss_data.empty?
-      Rss::Proc.rss_hashr rss_data.join
+
+      xml_splitd = XMLMotor.splitter rss_data.join
+      xml_tags = XMLMotor.indexify xml_splitd
+      rss_items = XMLMotor.xmldata xml_splitd, xml_tags, 'item'
+      rss_hash = Rss::Proc.rss_hashr rss_items, more_nodes, more_node_keys
     end
 
     #Returned Array of Hashes, where the keys are given *filters*
@@ -62,6 +66,9 @@ module Rss
   end
 end
 
+###USAGE EXAMPLES
 #puts Rss::Motor.rss_items 'http://news.ycombinator.com/rss'
 #puts "*"*100, "#{Rss::Motor.rss_grep 'http://news.ycombinator.com/rss', ['ruby', 'android']}"
 #puts "*"*100, "#{Rss::Motor.rss_grep_link 'http://news.ycombinator.com/rss', ['ruby', 'android']}"
+#puts Rss::Motor.rss_items 'http://news.ycombinator.com/rss', ['comments']
+#puts Rss::Motor.rss_items 'http://feeds.feedburner.com/RubyRogues?format=xml', ['comments'], {'media:content' => 'url'}
