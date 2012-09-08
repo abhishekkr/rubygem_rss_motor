@@ -1,9 +1,9 @@
 module Rss
   module Proc
 
-    def self.rss_hashr(items, more_nodes, more_node_keys)
+    def self.rss_hashr(items, more_nodes=[], more_node_keys={})
       rss_hash = []
-      items.each_with_index do |item, idx|
+      [items].flatten.each_with_index do |item, idx|
         item_splitd = XMLMotor.splitter item
         item_tags = XMLMotor.indexify item_splitd
         title = XMLMotor.xmldata item_splitd, item_tags, 'title'
