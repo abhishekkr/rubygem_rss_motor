@@ -8,6 +8,12 @@
 CHANGE-LOG
 =====================================================================
 =====================================================================
+Changes from v0.1.0 to v0.1.1
+[+] The node-attrib search would become a hash-key as
+      'node:attrib' instead of 'node'
+[+] Handling types of arguments passed on to rss_hashr
+[+] Fixing default value for node-attribs
+=====================================================================
 Changes from v0.0.9 to v0.1.0
 [+] updating Rss::Motor.items to fetch also custom nodes or node-attribs
 =====================================================================

@@ -14,10 +14,24 @@ describe Rss::Proc do
     response.should eq([{'title' => 'FooBar',  'link'=>'', 'guid'=>'', 'description'=>'', 'date'=>'', 'author'=>'', 'enclosure'=>'', 'uuid'=>'007'}])
   end
 
-  it "should returned Hash with required Node Value's Attribute" do
+  it "should returned Hash with required Node Value's Attribute, 2nd arg as nil" do
+    data        = '<item><title>FooBar</title><uu id="007"/></item>'
+    node_attrib = {'uu' => 'id'}
+    response    = Rss::Proc.rss_hashr(data, nil, node_attrib)
+    response.should eq([{'title' => 'FooBar',  'link'=>'', 'guid'=>'', 'description'=>'', 'date'=>'', 'author'=>'', 'enclosure'=>'', 'uu:id'=>'007'}])
+  end
+
+  it "should returned Hash with required Node Value's Attribute, 2nd arg empty" do
     data        = '<item><title>FooBar</title><uu id="007"/></item>'
     node_attrib = {'uu' => 'id'}
     response    = Rss::Proc.rss_hashr(data, [], node_attrib)
-    response.should eq([{'title' => 'FooBar',  'link'=>'', 'guid'=>'', 'description'=>'', 'date'=>'', 'author'=>'', 'enclosure'=>'', 'uu'=>'007'}])
+    response.should eq([{'title' => 'FooBar',  'link'=>'', 'guid'=>'', 'description'=>'', 'date'=>'', 'author'=>'', 'enclosure'=>'', 'uu:id'=>'007'}])
+  end
+
+  it "should returned Hash with 3rd Argument (node-attrib) as non-hash" do
+    data        = '<item><title>FooBar</title><uu id="007"/></item>'
+    node_attrib = nil
+    response    = Rss::Proc.rss_hashr(data, [], node_attrib)
+    response.should eq([{'title' => 'FooBar',  'link'=>'', 'guid'=>'', 'description'=>'', 'date'=>'', 'author'=>'', 'enclosure'=>''}])
   end
 end

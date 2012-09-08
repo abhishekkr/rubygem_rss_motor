@@ -26,7 +26,7 @@ describe Rss::Motor do
     @for_node = 'comments'
     @response_for_node = {'comments' => 'no comment'}
     @for_node_attrib = {'media:content' => 'size'}
-    @response_for_node_attrib = {'media:content' => '8Bit'}
+    @response_for_node_attrib = {'media:content:size' => '8Bit'}
     @url = "http://example.com"
   end
 
@@ -105,22 +105,27 @@ describe Rss::Motor do
       res = Rss::Motor.item_filter({"title" => "some value"}, "value")
       res.should eq(true)
     end
+
     it "should return true if filter value founded case-insensitive" do
       res = Rss::Motor.item_filter({"title" => "Some Value"}, "value")
       res.should eq(true)
     end
+
     it "should return false if filter value not founded" do
       res = Rss::Motor.item_filter({"title" => "some value"}, "lorem")
       res.should eq(false)
     end
+
     it "should return true if item is empty" do
       res = Rss::Motor.item_filter({}, "value")
       res.should eq(false)
     end
+
     it "should return false if filter is nil" do
       res = Rss::Motor.item_filter({"title" => "some value"}, nil)
       res.should eq(false)
     end
+
     it "should return false if filter is empty" do
       res = Rss::Motor.item_filter({"title" => "some value"}, "  ")
       res.should eq(false)

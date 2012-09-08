@@ -28,7 +28,7 @@ An easy to use RSS library to get kickstarted with using RSS Feeds.
 
   [+] passing a single RSS Link and fetching array of all items, with hash of nodes
     puts Rss::Motor.rss_items 'http://news.ycombinator.com/rss', ['comments'], {'media:content' => 'url'}
-    Output: [{'title1' => '....', ...}, {'title2' => '....', ...}, ...]
+    Output: [{'title1' => '....', ..., 'media:content:url' => '...'}, {'title2' => '....', ..., 'media:content:url' => '...'}, ...]
     This will fetch hash with set of node values per rss item, including node value for 'comment'; value for 'url' attribute for node 'media:content'
 
   [+] filtering items from multiple rss-links having any from set of given keywords
