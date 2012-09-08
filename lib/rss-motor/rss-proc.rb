@@ -24,11 +24,13 @@ module Rss
         }
 
         [more_nodes].flatten.each do |node|
-          rss_hash[idx][node] = XMLMotor.xmldata(item_splitd, item_tags, node).join
+          rss_hash[idx][node] = XMLMotor.xmldata(item_splitd, item_tags, node).join unless node.nil?
         end
 
-        more_node_keys.each_pair do |node, key|
-          rss_hash[idx][node] = XMLMotor.xmlattrib(key, item_splitd, item_tags, node).join
+        if more_node_keys.is_a? Hash
+          more_node_keys.each_pair do |node, key|
+            rss_hash[idx]["#{node}:#{key}"] = XMLMotor.xmlattrib(key, item_splitd, item_tags, node).join
+          end
         end
       end
       return rss_hash
